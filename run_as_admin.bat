@@ -1,0 +1,1 @@
+python.exe "pc_cleanup.py"
