@@ -2,6 +2,7 @@ import os
 import glob
 import getpass
 import pathlib
+import pywintypes
 import win32serviceutil  # in cmd: pip install pywin32
 
 def removeFiles(path):
@@ -25,7 +26,7 @@ def disableService(svc):
 	os.system("sc config " + svc + " start=disabled")
 	print(f"disabled {svc} on startup")
 	win32serviceutil.StopService(svc)
-	print(f"stopped {svc}")
+	print(f"stopped {svc} or it wasn't running")
 
 def main():
 	# remove temp files
@@ -52,7 +53,7 @@ def main():
 		removeFiles(path)
 	print()  # prettier
 	# disable services, NEEDS ADMIN TO DO THIS
-	print("disabling services:")
+	print('disabling services:')
 	svcs = ['DiagTrack', 'BITS', 'SysMain']  # service names
 	'''
 	options:
@@ -70,7 +71,7 @@ def main():
 		try:
 			disableService(svc)
 		except:
-			print(f"needs admin priveleges to stop {svc}")
+			pass
 	input("press enter to exit\n")
 
 main()

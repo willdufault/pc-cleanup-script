@@ -1,1 +1,1 @@
-python.exe "pc_cleanup.py"
+python.exe "%~dp0pc_cleanup.py"
