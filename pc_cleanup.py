@@ -72,6 +72,6 @@ def main():
 			disableService(svc)
 		except:
 			pass
-	input("press enter to exit\n")
+	input('press enter to exit\n')
 
 main()
